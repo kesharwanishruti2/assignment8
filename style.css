@@ -212,8 +212,8 @@ main{
     background-color:#88b3e2a5;
     color: #0056B3;
 }
-.icon:hover{
-    color:#0056B3;
+.left button:hover .icon{
+color:#0056B3;
 }
 .add1{
     display:flex;
@@ -722,4 +722,10 @@ body.dark{
 }
 body.dark #Add{
     background-color: #1d4ed8;
+}
+.dash1,
+.settings-page{
+     min-width:100%;
+    min-height:100%;
+    /* padding:24px; */
 }

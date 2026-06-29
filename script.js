@@ -260,16 +260,24 @@ tbody.innerHTML = "";
  })
 
  //===============================setting=====================================
-// settingBtn.addEventListener("click", () => {
-//     dashboard.style.display = "none";
-//     settings.classList.add("show");
-// });
+let dashboardBtn =  document.querySelector("#dashboard")
+let setting = document.querySelector("#Setting")
 
-// dashboardBtn.addEventListener("click", () => {
-//     dashboard.style.display = "flex";
-//     settings.classList.remove("show");
-// });
+let dashboardPage = document.querySelector("#dashboardPage");
+let settingsPage = document.querySelector("#settingsPage");
 
+ setting.addEventListener("click",()=>{
+ dashboardPage.style.display = "none";
+ settingsPage.style.display = "block";
+ })
+//==========================Dashboard=========================================
+dashboardBtn.addEventListener("click",()=>{
+ dashboardPage.style.display = "grid";
+ settingsPage.style.display = "none";
+})
+
+
+//========================================Dark mode================================================
 let themeToggle1 = document.querySelector("#themeToggle1")
 themeToggle1.addEventListener("change",()=>{
         console.log(themeToggle1.checked);
