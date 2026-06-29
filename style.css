@@ -700,7 +700,7 @@ input:checked + .slider:before {
     --nav-section: #F3F2ED;
 --right-top: #F3F2ED;
  --transaction:#F3F2ED;
-   --search-box:#F3F2ED;
+   --search-box:transparent;
    --dash:rgba(255, 255, 255, 0.919);
     --text: black;
 }
