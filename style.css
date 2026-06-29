@@ -700,8 +700,9 @@ input:checked + .slider:before {
     --nav-section: #F3F2ED;
 --right-top: #F3F2ED;
  --transaction:#F3F2ED;
-   --search-box:transparent;
+   --search-box:#F3F2ED;
    --dash:rgba(255, 255, 255, 0.919);
+      --cards:#dad1a7;
     --text: black;
 }
 
@@ -711,13 +712,14 @@ body.dark{
     --sidebar:#1F2937;
     --right-bottom:#1f1f1f;
     --preference:#1f1f1f;
-    --page-header:#1F2937;
+    /* --page-header:#1F2937; */
     --right-top:#1F2937;
     --right:#1f1f1f;
     --nav-section:#1F2937;
     --transaction:#1F2937;
     --search-box:#1f1f1f;
     --dash:#1f1f1f;
+    --cards:#1F2937;
     --text:white;
 }
 body.dark #Add{
@@ -728,4 +730,53 @@ body.dark #Add{
      min-width:100%;
     min-height:100%;
     /* padding:24px; */
+}
+.cards {
+    background-color:var();
+    width: 50%;
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px;
+    margin:10px;
+    
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-row1 {
+    display: flex;
+    margin-bottom: 16px;
+    gap: 14px;
+}
+
+.form-group1 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    flex: 1;
+    gap: 9px;
+}
+
+#final {
+    padding: 10px 16px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.settingCurency{
+ padding:14px 12px;
+    border-radius: 18x;
+}
+.namm{
+    padding:14px 12px;
+    border-radius: 18x;
 }

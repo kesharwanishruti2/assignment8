@@ -173,9 +173,36 @@
     </div>
 
     <div class="setting-page" id="settingsPage">
-        Settings Content
+      <div class="page-header">
+                 <div>
+                    <h1>Settings</h1>
+                    <p>Manage your account profile and app formatting</p>
+                 </div>
     </div>
-
+               <div class="cards">
+               <div class="card-header"> <h3>Profile Details</h3></div>
+               <form  id = "settingsform">
+    <div class="form-row1">
+        <div class="form-group1">
+            <label >Full Name</label>
+            <input type="text" id ="namm" required>
+        </div>
+        <div class="form-group1">
+            <label >Primary Currency</label>
+            <select  id="settingCurency" required>
+                <option value="$">USD ($)</option>
+                <option value="€">EUR (€)</option>
+                <option value="£">GBP (£)</option>
+                <option value="₹">INR (₹)</option>
+                <option value="¥">JPY (¥)</option>
+            </select>
+        </div>
+    </div>
+         <button type="submit" id ="final">save Changes</button>
+  </form>
+               </div>
+ 
+   
 
 
 

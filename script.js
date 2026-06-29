@@ -289,3 +289,33 @@ themeToggle1.addEventListener("change",()=>{
           document.body.classList.remove("dark")
     }
 })
+//============================================ setting ka andar ki card ki value mai ============================================
+let input = document.querySelector("#namm");
+let savee = document.querySelector("#settingCurency");
+let isEditing = "false"
+savee.addEventListener("click",()=>{
+    if(isEditing){
+input.disabled = "true";
+savee.innerText = "Edit"
+    }
+    else{
+        input.disabled = "false";
+        savee.innerText="Save"
+    }
+    isEditing = !isEditing;
+})
+
+// ======================================================currency===============================================================
+ let Currency = document.querySelector("#settingCurency")
+ let dash1 = document.querySelector("#dash1")
+
+
+settingCurency = document.querySelector("input",(e)=>{
+let selected =  e . target.value;
+dashboard = innerHTML
+  dashboardCurrency.innerText = selectedCurrency;
+
+    dashboardCurrency.innerText = selectedCurrency;
+ localStorage.setItem("primaryCurrency", selectedCurrency);
+    
+})
