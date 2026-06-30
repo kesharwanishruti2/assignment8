@@ -188,10 +188,18 @@ console.log(transactions);
    
  }
 function update(income, expense) {
-    document.querySelector("#income").innerText = income;
-    document.querySelector("#expense").innerText = expense;
-     document.querySelector("#displayBalance").innerText = income - expense;
-     document.querySelector("#balance").innerText = transactions.length;
+        let balance = income - expense;
+    let currency = localStorage.getItem("currency") || "₹";
+
+    document.querySelector("#income").dataset.value = income;
+    document.querySelector("#expense").dataset.value = expense;
+    document.querySelector("#displayBalance").dataset.value = balance;
+
+    document.querySelector("#income").innerText = currency + " " + income;
+    document.querySelector("#expense").innerText = currency + " " + expense;
+    document.querySelector("#displayBalance").innerText = currency + " " + balance;
+
+    document.querySelector("#balance").innerText = transactions.length;
 }
 
 // ye dash board ke liye hai ye jo show hoga 
@@ -202,9 +210,9 @@ function update(income, expense) {
 // delete ka logic
 function deleteTransaction(index){
 transactions.splice(index,1);
-ui();
-saveToLocal();  
-displayTransaction();
+ localStorage.setItem("transaction", JSON.stringify(transactions));
+// saveToLocal();  
+renderDashboard()
 }
 
 function renderDashboard() {
@@ -278,18 +286,11 @@ let reset = document.querySelector(".reset-btn");
  reset.addEventListener("click",()=>{
 let tbody = document.querySelector("#tbody");
 //ye array ke liye
- let transactions = [];
-localStorage.removeItem("transaction");
-tbody.innerHTML = "";
+  transactions = [];
+localStorage.setItem("transaction", JSON.stringify(transactions));
 
-income = 0;
-expense = 0;
-balance = 0;
-document.querySelector("#income").innerText = "0";
-document.querySelector("#expense").innerText = "0";
-document.querySelector("#displayBalance").innerText = "0";
-document.querySelector("#balance").innerText = "0";
-tbody.innerHTML = "";
+renderDashboard();
+
  })
 
  //===============================setting=====================================
@@ -305,7 +306,7 @@ let settingsPage = document.querySelector("#settingsPage");
  })
 //==========================Dashboard=========================================
 dashboardBtn.addEventListener("click",()=>{
- dashboardPage.style.display = "grid";
+ dashboardPage.style.display = "block";
  settingsPage.style.display = "none";
 })
 
@@ -328,7 +329,7 @@ themeToggle1.addEventListener("change",()=>{
 let input = document.querySelector("#namm");//input
 let namooo = document.querySelector("#navname")//navsection
  let Currency = document.querySelector("#settingCurency")//ye primarycurrency setting vali
- let dash1 = document.querySelector("#dash1")//currencyye dash board select karugi
+ let dash1 = document.querySelector(".dash1")//currencyye dash board select karugi
  let saveC = document.querySelector("#final")
  let cards1 = document.querySelectorAll(".currencySymbol");
 
@@ -374,35 +375,33 @@ window.addEventListener("load",()=>{
    }
    if(saveCurrency){
      Currency.value = saveCurrency;
-     dash1.textContent = saveCurrency;
+    //  dash1.textContent = saveCurrency;
         updateCurrency(saveCurrency);
    }
-    let data = JSON.parse(localStorage.getItem("users"));
-    if(data){
-        document.querySelector("#navname").textContent = data.username;
-    }
+  
+      renderDashboard();
 })
 // =================================logout========================================
 let logoutBtn = document.querySelector("#logout");
 
 logoutBtn.addEventListener("click",()=>{
-    localStorage.removeItem("user")
-    localStorage.removeItem("username")
-    localStorage.removeItem("currency")
+ logoutBtn.addEventListener("click", () => {
+
+    localStorage.removeItem("user");
+    localStorage.removeItem("username");
+    localStorage.removeItem("currency");
     localStorage.removeItem("transaction");
+    transactions = [];
+    renderDashboard();
 
-    document.querySelector("#navname").textContent = "Guest";
+   document.querySelector("#navname").textContent = "Guest";
 
-    document.querySelector("#income").innerText = "0";
-    document.querySelector("#expense").innerText = "0";
-    document.querySelector("#displayBalance").innerText = "0";
-    document.querySelector("#balance").innerText = "0";
-     tbody.innerHTML = "";
-       section3.style.display = "none";
+    section3.style.display = "none";
     section1.style.display = "flex";
 
     alert("Logged out successfully!");
+});
 })
 
-console.log(transactions);
-console.log(cashFlowChart.data.datasets[0].data);
+// console.log(transactions);
+// console.log(cashFlowChart.data.datasets[0].data);

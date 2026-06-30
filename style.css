@@ -786,3 +786,6 @@ body.dark #Add{
 .chart{
     padding: 10px;
 }
+.setting-page{
+    display: none;
+}
