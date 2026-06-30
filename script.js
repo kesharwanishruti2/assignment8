@@ -329,7 +329,7 @@ themeToggle1.addEventListener("change",()=>{
 let input = document.querySelector("#namm");//input
 let namooo = document.querySelector("#navname")//navsection
  let Currency = document.querySelector("#settingCurency")//ye primarycurrency setting vali
- let dash1 = document.querySelector(".dash1")//currencyye dash board select karugi
+//  let dash1 = document.querySelector(".dash1")//currencyye dash board select karugi
  let saveC = document.querySelector("#final")
  let cards1 = document.querySelectorAll(".currencySymbol");
 
@@ -354,7 +354,7 @@ if(nameValue === ""){
    updateCurrency(currencyValue);
 
 namooo.textContent = nameValue;//nav koupdate
-dash1.textContent = currencyValue//dashboard me
+
 
 
 let currency = Currency.value;
@@ -363,7 +363,7 @@ let currency = Currency.value;
 //abhe localstorage mai cheeze ayae gi 
  localStorage.setItem("username", nameValue);
 localStorage.setItem("currency", currencyValue);
-
+  renderDashboard(); 
 })
 //abhe data yadd rahana chaiye refresh hona per or abhe st lkiye value ko ge karo
 window.addEventListener("load",()=>{
@@ -384,7 +384,6 @@ window.addEventListener("load",()=>{
 // =================================logout========================================
 let logoutBtn = document.querySelector("#logout");
 
-logoutBtn.addEventListener("click",()=>{
  logoutBtn.addEventListener("click", () => {
 
     localStorage.removeItem("user");
@@ -401,7 +400,6 @@ logoutBtn.addEventListener("click",()=>{
 
     alert("Logged out successfully!");
 });
-})
 
 // console.log(transactions);
 // console.log(cashFlowChart.data.datasets[0].data);
