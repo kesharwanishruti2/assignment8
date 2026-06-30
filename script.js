@@ -351,5 +351,24 @@ window.addEventListener("load",()=>{
         document.querySelector("#navname").textContent = data.username;
     }
 })
+// =================================logout========================================
+let logoutBtn = document.querySelector("#logout");
 
+logoutBtn.addEventListener("click",()=>{
+    localStorage.removeItem("user")
+    localStorage.removeItem("username")
+    localStorage.removeItem("currency")
+    localStorage.removeItem("transaction");
 
+    document.querySelector("#navname").textContent = "Guest";
+
+    document.querySelector("#income").innerText = "0";
+    document.querySelector("#expense").innerText = "0";
+    document.querySelector("#displayBalance").innerText = "0";
+    document.querySelector("#balance").innerText = "0";
+     tbody.innerHTML = "";
+       section3.style.display = "none";
+    section1.style.display = "flex";
+
+    alert("Logged out successfully!");
+})
