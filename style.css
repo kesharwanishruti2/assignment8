@@ -154,7 +154,7 @@ main{
 .section3{
     display: flex;
     height: 100vh;
-   overflow: hidden;
+   /* overflow: hidden; */
 }
 .left{
     width:260px;
@@ -238,7 +238,7 @@ color:#0056B3;
     display: flex;
     flex-direction: column;
     height: 100vh;  
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: var(--right);
 }
 .right-top{
@@ -328,8 +328,8 @@ color:#0056B3;
 
 .chart{
     grid-area: chart;
-    background-color: #81a3e7;
-    min-height: 400px;
+    background-color:var(--chart);
+    min-height: 300px;
     /* width:1200px */
 }
 
@@ -350,7 +350,8 @@ color:#0056B3;
 }
 .right-bottom{
     flex:1;
-    overflow: hidden;
+    /* overflow: hidden; */
+     overflow-y: auto;
      background:var(--right-bottom);
 }
 .card1,
@@ -703,6 +704,7 @@ input:checked + .slider:before {
    --search-box:#F3F2ED;
    --dash:rgba(255, 255, 255, 0.919);
       --cards:#dad1a7;
+      --chart:#e0ddcc;
     --text: black;
 }
 
@@ -720,6 +722,7 @@ body.dark{
     --search-box:#1f1f1f;
     --dash:#1f1f1f;
     --cards:#1F2937;
+    --chart:#1F2937;
     --text:white;
 }
 body.dark #Add{
@@ -779,4 +782,7 @@ body.dark #Add{
 .namm{
     padding:14px 12px;
     border-radius: 18x;
+}
+.chart{
+    padding: 10px;
 }

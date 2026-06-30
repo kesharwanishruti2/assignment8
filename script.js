@@ -138,7 +138,32 @@ function editTransaction(index) {
     editIndex = index;
       section4.style.display = "flex";
 }
- 
+//charts 
+const ctx = document.getElementById("cashFlowChart");
+
+const cashFlowChart = new Chart(ctx, {
+    type: "bar",
+
+    data: {
+        labels: ["Income", "Expense"],
+
+        datasets: [{
+            label: "Cash Flow",
+            data: [0, 0],
+
+            backgroundColor: [
+                "green",
+                "red"
+            ]
+        }]
+    },
+
+    options: {
+        responsive: true
+    }
+}); 
+
+
 function ui() {
   let income = 0;
   let expense = 0;
@@ -153,7 +178,13 @@ function ui() {
     }
   }
 
+  console.log("Income:", income);
+console.log("Expense:", expense);
+console.log(transactions);
   update(income, expense);
+  // =============================yw chart ka kuch oparat hai ========================= 
+   cashFlowChart.data.datasets[0].data = [income, expense];
+ cashFlowChart.update();
    
  }
 function update(income, expense) {
@@ -372,3 +403,6 @@ logoutBtn.addEventListener("click",()=>{
 
     alert("Logged out successfully!");
 })
+
+console.log(transactions);
+console.log(cashFlowChart.data.datasets[0].data);
