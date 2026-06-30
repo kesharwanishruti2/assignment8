@@ -56,6 +56,8 @@ let data = JSON.parse(localStorage.getItem("users")) || {};
 if(name.value === data.username && password.value === data.Password){
  section3.style.display = "flex";
   section1.style.display = "none";
+    localStorage.setItem("username", data.username);
+   document.querySelector("#navname").textContent = data.username;
 }
 else{
     alert("Invalid Username or password")
@@ -290,32 +292,64 @@ themeToggle1.addEventListener("change",()=>{
     }
 })
 //============================================ setting ka andar ki card ki value mai ============================================
-let input = document.querySelector("#namm");
-let savee = document.querySelector("#settingCurency");
-let isEditing = "false"
-savee.addEventListener("click",()=>{
-    if(isEditing){
-input.disabled = "true";
-savee.innerText = "Edit"
-    }
-    else{
-        input.disabled = "false";
-        savee.innerText="Save"
-    }
-    isEditing = !isEditing;
-})
 
-// ======================================================currency===============================================================
- let Currency = document.querySelector("#settingCurency")
- let dash1 = document.querySelector("#dash1")
-
-
-settingCurency = document.querySelector("input",(e)=>{
-let selected =  e . target.value;
-dashboard = innerHTML
-  dashboardCurrency.innerText = selectedCurrency;
-
-    dashboardCurrency.innerText = selectedCurrency;
- localStorage.setItem("primaryCurrency", selectedCurrency);
     
+let input = document.querySelector("#namm");//input
+let namooo = document.querySelector("#navname")//navsection
+ let Currency = document.querySelector("#settingCurency")//ye primarycurrency setting vali
+ let dash1 = document.querySelector("#dash1")//currencyye dash board select karugi
+ let saveC = document.querySelector("#final")
+ let cards1 = document.querySelectorAll(".currencySymbol");
+
+
+
+//ye dashboard per currency show karana ke liye hai 
+function updateCurrency(currency) {
+    document.querySelectorAll(".currencySymbol").forEach((card) => {
+        let value = card.dataset.value || 0;
+        card.textContent = currency + " " + value;
+    });
+}
+saveC.addEventListener("click",(e)=>{
+    e.preventDefault()
+    //data lena bolta
+let nameValue = input.value.trim();//ye just data le raha hai
+let currencyValue = Currency.value  //ye select kara raha hai
+if(nameValue === ""){
+     nameValue = localStorage.getItem("username") || "User";
+    }
+
+   updateCurrency(currencyValue);
+
+namooo.textContent = nameValue;//nav koupdate
+dash1.textContent = currencyValue//dashboard me
+
+
+let currency = Currency.value;
+
+   
+//abhe localstorage mai cheeze ayae gi 
+ localStorage.setItem("username", nameValue);
+localStorage.setItem("currency", currencyValue);
+
 })
+//abhe data yadd rahana chaiye refresh hona per or abhe st lkiye value ko ge karo
+window.addEventListener("load",()=>{
+   let saveName = localStorage.getItem("username")
+   let saveCurrency =  localStorage.getItem("currency")
+   if(saveName){
+     input.value = saveName;
+    namooo.textContent = saveName;
+   }
+   if(saveCurrency){
+     Currency.value = saveCurrency;
+     dash1.textContent = saveCurrency;
+        updateCurrency(saveCurrency);
+   }
+    let data = JSON.parse(localStorage.getItem("users"));
+    if(data){
+        document.querySelector("#navname").textContent = data.username;
+    }
+})
+
+
